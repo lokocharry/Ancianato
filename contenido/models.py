@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.core.urlresolvers import reverse_lazy
-from froala_editor.fields import FroalaField
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.contrib.auth.models import User
 from solo.models import SingletonModel
