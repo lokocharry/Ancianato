@@ -36,10 +36,15 @@ class Historia(SingletonModel):
 class Pagina(models.Model):
     contenido = RichTextUploadingField()
 
+TIPO_DOCUMENTO = (
+    ('L', 'Licitación'),
+    ('D', 'Documento'),
+)
+
 class Documento(models.Model):
 	documento = models.FileField(upload_to='documentos/%Y/%m/%d')
 	usuario = models.ForeignKey(User, null=True, blank=True)
-	tipo=models.CharField(max_length=1, null=True, blank=True)
+	tipo=models.CharField(max_length=1, null=True, blank=True, choices=TIPO_DOCUMENTO)
 
 	@property
 	def nombre(self):

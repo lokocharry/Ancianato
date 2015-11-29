@@ -30,6 +30,7 @@ urlpatterns = [
     url(r'^editarConocenos/', 'contenido.views.editar_conocenos', name='editarConocenos'),
 
     url(r'^conocenos/', 'contenido.views.conocenos', name='conocenos'),
+    url(r'^subirLicitacion/', 'contenido.views.subir_licitacion', name='subir_licitacion'),
 
     url(r'^salir', userena_views.signout),
     url(r'^registrarse/', userena_views.signup),

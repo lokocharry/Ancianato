@@ -24,8 +24,10 @@
 			<ul class="right hide-on-med-and-down">
 				{% if user.is_authenticated %}
 					<li>Bienvenido/a {{ user.first_name }}</li>
-						{%if perms.contenido.add_documento %}
+						{%if perms.contenido.add_documento and user.is_superuser %}
 							<li><a href="/subirDocumento" class="yellow-text accent-2">Subir Documento</a></li>
+						{% else %}
+							<li><a href="/subirLicitacion" class="yellow-text accent-2">Subir Licitacion</a></li>
 						{% endif %}
 						{%if perms.contenido.add_mision and perms.contenido.add_vision %}
 							<li><a href="/editarConocenos" class="yellow-text accent-2">Editar Conocenos</a></li>
@@ -39,11 +41,13 @@
 			<ul id="nav-mobile" class="side-nav">
 				{% if user.is_authenticated %}
 					<li>Bienvenido/a {{ user.first_name }}</li>
-						{%if perms.contenido.add_documento %}
-							<li><a href="/subirDocumento" class="yellow-text accent-2">Subir documento</a></li>
+						{%if perms.contenido.add_documento and user.is_superuser %}
+							<li><a href="/subirDocumento" class="yellow-text accent-2">Subir Documento</a></li>
+						{% else %}
+							<li><a href="/subirLicitacion" class="yellow-text accent-2">Subir Licitacion</a></li>
 						{% endif %}
 						{%if perms.contenido.add_mision and perms.contenido.add_vision %}
-							<li><a href="/editarMisionVision" class="yellow-text accent-2">Editar Conocenos</a></li>
+							<li><a href="/editarConocenos" class="yellow-text accent-2">Editar Conocenos</a></li>
 						{% endif %}
 					<li><a href="/salir" class="yellow-text accent-2">Salir</a></li>
 				{% else %}

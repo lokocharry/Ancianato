@@ -22,7 +22,8 @@ from django.template import Context
 from django.core.mail import send_mail, BadHeaderError
 
 def inicio(request):
-	documentos=Documento.objects.all().order_by('-id')
+	documentos=Documento.objects.filter(tipo="D").order_by('-id')
+	licitaciones=Documento.objects.filter(tipo="L").order_by('-id')
 	return render_to_response('index.html', locals(), context_instance=RequestContext(request))
 
 def dondeEstamos(request):
@@ -42,17 +43,32 @@ def crear_contenido(request):
 	return render_to_response('contenido.html', locals(), context_instance=RequestContext(request))
 
 def subir_documento(request):
-	documentos=Documento.objects.all().order_by('-id')
+	documentos=Documento.objects.filter(tipo="D").order_by('-id')
 	if request.method=='POST':
 		form = DocumentoForm(request.POST, request.FILES)
 		if form.is_valid():
 			obj=form.save()
 			obj.usuario=request.user
+			obj.tipo="D"
 			obj.save()
 			return HttpResponseRedirect('/subirDocumento')
 	else:
 		form = DocumentoForm()
 	return render_to_response('subirDocumento.html', locals(), context_instance=RequestContext(request))
+
+def subir_licitacion(request):
+	documentos=Documento.objects.filter(tipo="L").order_by('-id')
+	if request.method=='POST':
+		form = DocumentoForm(request.POST, request.FILES)
+		if form.is_valid():
+			obj=form.save()
+			obj.usuario=request.user
+			obj.tipo="L"
+			obj.save()
+			return HttpResponseRedirect('/subirLicitacion')
+	else:
+		form = DocumentoForm()
+	return render_to_response('subirLicitacion.html', locals(), context_instance=RequestContext(request))
 
 def editar_conocenos(request):
 	mision=Mision.objects.get()

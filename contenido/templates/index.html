@@ -96,17 +96,36 @@
 	<div class="container">
 		<div class="section">
 			<div class="row">
-				{% for i in documentos %}
-				<div class="col s2 center">
-					<div class="card-panel s2">
-						<span class="white-text">
-							<img src="static/img/{{ i.extension }}-icon.png" width="64px" height="64px">
-							<br>
-							<a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="{{ i.nombre }}" href="media/{{MEDIA_ROOT}}{{i.documento}}">{{ i.nombre|truncatechars:12 }}</a>
-						</span>
-					</div>	
-				</div>
+				<div class="col s6">
+					<h4 class="center">Últimos Documentos</h4>
+					{% for i in documentos %}
+					<div class="col s4 center">
+						<div class="card-panel s2">
+							<span class="white-text">
+								<img src="static/img/{{ i.extension }}-icon.png" width="64px" height="64px">
+								<br>
+								<a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="{{ i.nombre }}" href="media/{{MEDIA_ROOT}}{{i.documento}}">{{ i.nombre|truncatechars:12 }}</a>
+							</span>
+						</div>	
+					</div>
 				{% endfor %}
+				<a href="" class="center btn-large waves-effect green darken-3 waves-light teal lighten-1">Ver todos</a>
+				</div>
+				<div class="col s6">
+					<h4 class="center">Últimas Licitaciones</h4>
+					{% for i in licitaciones %}
+					<div class="col s4 center">
+						<div class="card-panel s2">
+							<span class="white-text">
+								<img src="static/img/{{ i.extension }}-icon.png" width="64px" height="64px">
+								<br>
+								<a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="{{ i.nombre }}" href="media/{{MEDIA_ROOT}}{{i.documento}}">{{ i.nombre|truncatechars:12 }}</a>
+							</span>
+						</div>	
+					</div>
+				{% endfor %}
+				<a href="" class="center btn-large waves-effect green darken-3 waves-light teal lighten-1">Ver todas</a>
+				</div>
 			</div>
 		</div>
 	</div>
