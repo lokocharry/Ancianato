@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import json
 import glob
 
@@ -116,3 +117,12 @@ def ver_contenido(request):
 	contenido=Pagina.objects.all()
 	return render_to_response('verContenido.html', locals(), context_instance=RequestContext(request))
 
+def verDocumentos(request):
+	titulo="Últimos Documentos"
+	documentos=Documento.objects.filter(tipo="D").order_by('-id')
+	return render_to_response('verDocumentos.html', locals(), context_instance=RequestContext(request))
+
+def verLicitaciones(request):
+	titulo="Últimas Licitaciones"
+	documentos=Documento.objects.filter(tipo="L").order_by('-id')
+	return render_to_response('verDocumentos.html', locals(), context_instance=RequestContext(request))

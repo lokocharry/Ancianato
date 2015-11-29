@@ -31,6 +31,8 @@ urlpatterns = [
 
     url(r'^conocenos/', 'contenido.views.conocenos', name='conocenos'),
     url(r'^subirLicitacion/', 'contenido.views.subir_licitacion', name='subir_licitacion'),
+    url(r'^verDocumentos/', 'contenido.views.verDocumentos', name='verDocumentos'),
+    url(r'^verLicitaciones/', 'contenido.views.verLicitaciones', name='verLicitaciones'),
 
     url(r'^salir', userena_views.signout),
     url(r'^registrarse/', userena_views.signup),
