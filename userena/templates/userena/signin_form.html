@@ -1,0 +1,28 @@
+{% extends 'userena/base_userena.html' %}
+{% load i18n %}
+{% load url from future %}
+
+{% block title %}{% trans "Signin" %}{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+  {% csrf_token %}
+  <fieldset>
+    <legend>{% trans "Signin" %}</legend>
+    {{ form.non_field_errors }}
+    <div class="row">
+      {% for field in form %}
+        <div class="input-field col s12">
+            {{ field }}
+            {{ field.errors }}
+            {{ field.label_tag }}
+        </div>
+      {% endfor %}
+      </div>
+  </fieldset>
+  <button class="btn waves-effect waves-light green darken-3" type="submit" name="action">Ingresar</button>
+  <p class="forgot-password"><a href="{% url 'userena_password_reset' %}" title="{% trans 'Forgot your password?' %}">{% trans "Forgot your password?" %}</a></p>
+  {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+</form>
+{% endblock %}
+

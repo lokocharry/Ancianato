@@ -1,0 +1,24 @@
+{% extends 'userena/base_userena.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+  {% csrf_token %}
+  <fieldset>
+    <legend>{% trans "Signup" %}</legend>
+    {{ form.non_field_errors }}
+    <div class="row">
+      {% for field in form %}
+        <div class="input-field col s12">
+            {{ field }}
+            {{ field.errors }}
+            {{ field.label_tag }}
+        </div>
+      {% endfor %}
+      </div>
+  </fieldset>
+  <button class="btn waves-effect waves-light green darken-3" type="submit" name="action">{% trans "Signup"%}</button>
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crear contenido</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	{{ form.media }}
+</head>
+<body>
+	<div>
+		{% for i in contenido %}
+			{{ i.contenido|safe }}
+		{% endfor %}
+	</div>
+</body>
+</html>

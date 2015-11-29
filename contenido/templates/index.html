@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+{% block parallax %}{% endblock parallax %}
+
+<div class="slider">
+		<ul class="slides">
+			<li>
+				<img src="{% static "img/1.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
+				<div class="caption center-align">
+					<h3>This is our big Tagline!</h3>
+					<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				</div>
+			</li>
+			<li>
+				<img src="{% static "img/2.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
+				<div class="caption left-align">
+					<h3>Left Aligned Caption</h3>
+					<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				</div>
+			</li>
+			<li>
+				<img src="{% static "img/3.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
+				<div class="caption right-align">
+					<h3>Right Aligned Caption</h3>
+					<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				</div>
+			</li>
+			<li>
+				<img src="{% static "img/4.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
+				<div class="caption center-align">
+					<h3>This is our big Tagline!</h3>
+					<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+				</div>
+			</li>
+		</ul>
+	</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+	<div class="container">
+		<div class="section">
+
+			<!--   Icon Section   -->
+			<div class="row">
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center"><a href="/dondeEstamos"><i class="large material-icons green-text darken-3">my_location</i></a></h2>
+						<a href="/dondeEstamos"><h5 class="center black-text">Dónde estamos</h5></a>
+
+						<p class="light">Revise la ubicación de nuestra instalaciones</p>
+					</div>
+				</div>
+
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center"><a href="/conocenos"><i class="large material-icons yellow-text accent-2">visibility</i></a></h2>
+						<a href="/conocenos"><h5 class="center black-text">Conócenos</h5></a>
+
+						<p class="light">Lea los principios que rigen nuestro funcionamiento</p>
+					</div>
+				</div>
+
+				<div class="col s12 m4">
+					<div class="icon-block">
+						<h2 class="center"><a href="/servicios"><i class="large material-icons red-text accent-4">settings</i></a></h2>
+						<a href="/servicios"><h5 class="center black-text">Programas</h5></a>
+
+						<p class="light">Los servicios que ofrecemos a a comunidad</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="section">
+			<div class="row">
+				<div class="col s12 center">
+					<a href="contactenos/"><h3><i class="mdi-content-send brown-text"></i></h3></a>
+					<a href="contactenos/" class="black-text"><h4>Contactenos</h4></a>
+					<p class="center light">Si tiene alguna duda, inquietud, sugerencia o quiere saber más acerca de nosotros, contactenos.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container">
+		<div class="section">
+			<div class="row">
+				{% for i in documentos %}
+				<div class="col s2 center">
+					<div class="card-panel s2">
+						<span class="white-text">
+							<img src="static/img/{{ i.extension }}-icon.png" width="64px" height="64px">
+							<br>
+							<a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="{{ i.nombre }}" href="media/{{MEDIA_ROOT}}{{i.documento}}">{{ i.nombre|truncatechars:12 }}</a>
+						</span>
+					</div>	
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="{% static "materialize/js/materialize.js" %}"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.parallax').parallax();
+			$(".button-collapse").sideNav();
+			$('.slider').slider({height: '90vh'});
+		});
+	</script>
+
+{% endblock content %}
+
+</body>
+</html>

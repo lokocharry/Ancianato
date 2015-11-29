@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<style type="text/css">
+	.parallax-container {
+		height: 60vh;
+	}
+</style>
+
+<h3 class="center">Contactenos</h3>
+
+<div class="container">
+	<div class="col s6">
+		<form method="POST">
+			{% csrf_token %}
+			<div class="row">
+			{% for field in form %}
+				<div class="input-field col s12">
+						{{ field }}
+						{{ field.label_tag }}
+				</div>
+			{% endfor %}
+			</div>
+			<button class="btn waves-effect waves-light green darken-3" type="submit" name="action">Enviar
+    			<i class="material-icons right">send</i>
+  			</button>
+		</form>
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{% static "materialize/js/materialize.js" %}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+			$('textarea').addClass('materialize-textarea');
+			$('.parallax').parallax();
+			$(".button-collapse").sideNav();
+			$('.slider').slider();
+		});
+</script>
+
+{% endblock content %}

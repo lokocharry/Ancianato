@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<style type="text/css">
+	.parallax-container {
+		height: 60vh;
+	}
+</style>
+
+	<div class="row">
+		<div class="col s8">
+		<h3 class="center">Subir Documento</h3>
+		<form method="POST" enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class="file-field input-field">
+			{{ form.documento.errors }}
+				<div class="btn yellow accent-2">
+					<span >Archivo</span>
+					{{ form.documento }}
+				</div>
+				<div class="file-path-wrapper">
+					<input class="file-path validate" type="text">
+				</div>
+			</div>
+			<button class="btn waves-effect waves-light green darken-3" type="submit" name="action">Enviar
+    			<i class="material-icons right">send</i>
+  			</button>
+		</form>
+		</div>
+		<div class="col s4">
+			<h5 class="center">Últimos Documentos</h5>
+			<div class="row">
+				{% for i in documentos %}
+				<div class="col card-panel s3">
+						<span class="white-text">
+							<img src="/static/img/{{ i.extension }}-icon.png" width="64px" height="64px">
+							<br>
+							<a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="{{ i.nombre }}" href="media/{{MEDIA_ROOT}}{{i.documento}}">{{ i.nombre|truncatechars:12 }}</a>
+						</span>
+					</div>
+			{% endfor %}
+			</div>
+		</div>
+	</div>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{% static "materialize/js/materialize.js" %}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+			$('.parallax').parallax();
+			$(".button-collapse").sideNav();
+			$('.slider').slider();
+		});
+</script>
+
+{% endblock content %}
