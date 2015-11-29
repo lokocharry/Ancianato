@@ -32,8 +32,8 @@ urlpatterns = [
     url(r'^conocenos/', 'contenido.views.conocenos', name='conocenos'),
 
     url(r'^salir', userena_views.signout),
-    url(r'^registrarse', userena_views.signup),
-    url(r'^ingresar', userena_views.signin),
+    url(r'^registrarse/', userena_views.signup),
+    url(r'^ingresar/', userena_views.signin),
     url(r'^usuario/', include('userena.urls')),
 
     url(r'^crear_contenido', 'contenido.views.crear_contenido', name='crear_contenido'),
