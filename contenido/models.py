@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from django.db import models
-from redactor.fields import RedactorField
 from django.core.urlresolvers import reverse_lazy
 from froala_editor.fields import FroalaField
 from ckeditor_uploader.fields import RichTextUploadingField
