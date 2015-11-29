@@ -110,8 +110,9 @@
 					</div>
 				{% empty %}
   					<h5>No hay Documentos</h5>
+  				{% not empty %}
+  					<a href="/verDocumentos" class="center btn-large waves-effect green darken-3 waves-light teal lighten-1">Ver todos</a>
 				{% endfor %}
-				<a href="/verDocumentos" class="center btn-large waves-effect green darken-3 waves-light teal lighten-1">Ver todos</a>
 				</div>
 				<!--
 				<div class="col s6">
