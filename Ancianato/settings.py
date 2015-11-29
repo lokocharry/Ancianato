@@ -37,14 +37,14 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'contenido',
+    'usuarios',
     'userena',
     'guardian',
     'easy_thumbnails',
     'ckeditor',
     'ckeditor_uploader',
     'solo',
-    'contenido',
-    'usuarios',
 )
 
 MIDDLEWARE_CLASSES = (
