@@ -21,6 +21,7 @@ from django.http import HttpResponseRedirect
 from contenido.forms import *
 from django.template import Context
 from django.core.mail import send_mail, BadHeaderError
+from django.contrib.auth.decorators import permission_required
 
 def inicio(request):
 	documentos=Documento.objects.filter(tipo="D").order_by('-id')
@@ -33,6 +34,7 @@ def dondeEstamos(request):
 def servicios(request):
 	return render_to_response('servicios.html', locals(), context_instance=RequestContext(request))
 
+@permission_required('contenido.add_contenido', login_url='/ingresar')
 def crear_contenido(request):
 	if request.method=='POST':
 		form = ContenidoForm(request.POST or None, request.FILES)
@@ -43,6 +45,7 @@ def crear_contenido(request):
 		form = ContenidoForm()
 	return render_to_response('contenido.html', locals(), context_instance=RequestContext(request))
 
+@permission_required('contenido.add_documento', login_url='/ingresar')
 def subir_documento(request):
 	documentos=Documento.objects.filter(tipo="D").order_by('-id')
 	if request.method=='POST':
@@ -57,6 +60,7 @@ def subir_documento(request):
 		form = DocumentoForm()
 	return render_to_response('subirDocumento.html', locals(), context_instance=RequestContext(request))
 
+@permission_required('contenido.add_documento', login_url='/ingresar')
 def subir_licitacion(request):
 	documentos=Documento.objects.filter(tipo="L").order_by('-id')
 	if request.method=='POST':
@@ -71,6 +75,7 @@ def subir_licitacion(request):
 		form = DocumentoForm()
 	return render_to_response('subirLicitacion.html', locals(), context_instance=RequestContext(request))
 
+@permission_required('contenido.change_mision', login_url='/ingresar')
 def editar_conocenos(request):
 	mision=Mision.objects.get()
 	vision=Vision.objects.get()

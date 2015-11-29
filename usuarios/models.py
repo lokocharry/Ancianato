@@ -6,3 +6,4 @@ from userena.models import UserenaBaseProfile
 class Usuario(UserenaBaseProfile):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     documento = models.CharField(max_length=10)
+    #NIT
