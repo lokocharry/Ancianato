@@ -6,7 +6,7 @@
 
 {% block parallax %}{% endblock parallax %}
 
-<div class="slider fullscreen">
+<div class="slider">
 		<ul class="slides">
 			<li>
 				<img src="{% static "img/1.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
@@ -117,7 +117,7 @@
 		$(document).ready(function(){
 			$('.parallax').parallax();
 			$(".button-collapse").sideNav();
-			$('.slider').slider();
+			$('.slider').slider({height: '90vh'});
 		});
 	</script>
 
