@@ -4,6 +4,7 @@
 {% block title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
+<div class="container">
 <form action="" method="post">
   {% csrf_token %}
   <fieldset>
@@ -21,4 +22,5 @@
   </fieldset>
   <button class="btn waves-effect waves-light green darken-3" type="submit" name="action">{% trans "Signup"%}</button>
 </form>
+</div>
 {% endblock %}
