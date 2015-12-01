@@ -18,9 +18,8 @@
 </head>
 <body>
 	<nav class="green darken-3" role="navigation">
-		<div class="nav-wrapper container">
-			<a id="logo-container" href="/" class="brand-logo black-text">Logo</a>
-
+		<div class="nav-wrapper">
+			<a id="logo-container left" href="/" class="brand-logo red-text accent-4">Casa del Adulto Mayor Motavita</a>
 			<ul class="right hide-on-med-and-down">
 				{% if user.is_authenticated %}
 					<li>Bienvenido/a {{ user.first_name }}</li>
@@ -31,6 +30,9 @@
 						{% endif %}
 						{%if perms.contenido.add_mision and perms.contenido.add_vision %}
 							<li><a href="/editarConocenos" class="yellow-text accent-2">Editar Conocenos</a></li>
+						{% endif %}
+						{%if user.is_superuser %}
+							<li><a href="/admin" class="yellow-text accent-2">Módulo Admin</a></li>
 						{% endif %}
 					<li><a href="/salir" class="yellow-text accent-2">Salir</a></li>
 				{% else %}

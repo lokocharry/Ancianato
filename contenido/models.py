@@ -43,8 +43,10 @@ TIPO_DOCUMENTO = (
 
 class Documento(models.Model):
 	documento = models.FileField(upload_to='documentos/%Y/%m/%d')
+	titulo = models.CharField(max_length=50, null=True, blank=True)
+	descripcion = models.TextField()
 	usuario = models.ForeignKey(User, null=True, blank=True)
-	tipo=models.CharField(max_length=1, null=True, blank=True, choices=TIPO_DOCUMENTO)
+	tipo = models.CharField(max_length=1, null=True, blank=True, choices=TIPO_DOCUMENTO)
 
 	@property
 	def nombre(self):
