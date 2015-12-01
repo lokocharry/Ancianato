@@ -9,33 +9,37 @@
 <div class="slider">
 		<ul class="slides">
 			<li>
-				<img src="{% static "img/1.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
-				<div class="caption center-align">
+				<img src="{% static "img/fondo.jpg" %}" alt="Unsplashed background img 1"> 
+				<!--<div class="caption center-align">
 					<h3>This is our big Tagline!</h3>
 					<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
 				</div>
+				-->
 			</li>
 			<li>
-				<img src="{% static "img/2.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
-				<div class="caption left-align">
+				<img src="{% static "img/6.jpg" %}" alt="Unsplashed background img 1"> 
+				<!--<div class="caption left-align">
 					<h3>Left Aligned Caption</h3>
 					<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
 				</div>
+				-->
 			</li>
+			<!--
 			<li>
-				<img src="{% static "img/3.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
+				<img src="{% static "img/3.jpg" %}" alt="Unsplashed background img 1"> 
 				<div class="caption right-align">
 					<h3>Right Aligned Caption</h3>
 					<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
 				</div>
 			</li>
 			<li>
-				<img src="{% static "img/4.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
+				<img src="{% static "img/4.jpg" %}" alt="Unsplashed background img 1"> 
 				<div class="caption center-align">
 					<h3>This is our big Tagline!</h3>
 					<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
 				</div>
 			</li>
+			-->
 		</ul>
 	</div>
 <br>
@@ -84,15 +88,21 @@
 	<div class="container">
 		<div class="section">
 			<div class="row">
-				<div class="col s12 center">
-					<a href="contactenos/"><h3><i class="mdi-content-send brown-text"></i></h3></a>
-					<a href="contactenos/" class="black-text"><h4>Contactenos</h4></a>
+			<div class="col s6 center">
+					<a href="/verDocumentos"><h3><i class="large material-icons blue-text">info_outline</i></h3></a>
+					<a href="/verDocumentos" class="black-text"><h4>Novedades</h4></a>
+					<p class="center light">Noticias, novedades e información de interes</p>
+				</div>
+				<div class="col s6 center">
+					<a href="/contactenos"><h3><i class="mdi-content-send brown-text"></i></h3></a>
+					<a href="/contactenos" class="black-text"><h4>Contactenos</h4></a>
 					<p class="center light">Si tiene alguna duda, inquietud, sugerencia o quiere saber más acerca de nosotros, contactenos.</p>
 				</div>
 			</div>
 		</div>
 	</div>
 	
+	<!--
 	<div class="container">
 		<div class="section">
 			<div class="row">
@@ -115,7 +125,7 @@
 				<a href="/verDocumentos" class="center btn-large waves-effect green darken-3 waves-light teal lighten-1">Ver todos</a>
 				{% endif %}
 				</div>
-				<!--
+				
 				<div class="col s6">
 					<h4 class="center">Últimas Licitaciones</h4>
 					{% for i in licitaciones %}
@@ -131,10 +141,11 @@
 				{% endfor %}
 				<a href="/verLicitaciones" class="center btn-large waves-effect green darken-3 waves-light teal lighten-1">Ver todas</a>
 				</div>
-				-->
+				
 			</div>
 		</div>
 	</div>
+	-->
 
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="{% static "materialize/js/materialize.js" %}"></script>

@@ -123,7 +123,7 @@ def ver_contenido(request):
 	return render_to_response('verContenido.html', locals(), context_instance=RequestContext(request))
 
 def verDocumentos(request):
-	titulo="Últimos Documentos"
+	titulo="Últimas Novedades"
 	documentos=Documento.objects.filter(tipo="D").order_by('-id')
 	return render_to_response('verDocumentos.html', locals(), context_instance=RequestContext(request))
 

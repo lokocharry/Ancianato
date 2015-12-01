@@ -36,10 +36,20 @@
 	<script type="text/javascript">
 		var map;
 		function initMap() {
+			var myLatLng = {lat: 5.5795166, lng: -73.3656992};
+
 			map = new google.maps.Map(document.getElementById('map'), {
 				center: {lat: 5.5775958, lng: -73.3672802},
 				zoom: 16
 			});
+
+			var marker = new google.maps.Marker({
+    			position: myLatLng,
+    			draggable:false,
+    			title: 'Centro de Vida Casa Bienestar del Anciano de Motavita'
+  			});
+
+  			marker.setMap(map);
 		}
 
 	</script>
