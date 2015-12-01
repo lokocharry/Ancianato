@@ -25,10 +25,12 @@
 					<input class="file-path validate" type="text">
 				</div>
 			</div>
+			{{ form.titulo.errors }}
 			<div class="input-field col s12">
 				{{ form.titulo }}
 				{{ form.titulo.label_tag }}
 			</div>
+			{{ form.descripcion.errors }}
 			<div class="input-field col s12">
 				{{ form.descripcion }}
 				{{ form.descripcion.label_tag }}
@@ -46,7 +48,7 @@
 						<span class="white-text">
 							<img src="/static/img/{{ i.extension }}-icon.png" width="64px" height="64px">
 							<br>
-							<a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="{{ i.nombre }}" href="media/{{MEDIA_ROOT}}{{i.documento}}">{{ i.nombre|truncatechars:12 }}</a>
+							<a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="{{ i.nombre }}" href="/media/{{MEDIA_ROOT}}{{i.documento}}">{{ i.nombre|truncatechars:12 }}</a>
 						</span>
 					</div>
 			{% endfor %}
