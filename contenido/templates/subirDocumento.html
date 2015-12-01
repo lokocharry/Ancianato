@@ -25,6 +25,14 @@
 					<input class="file-path validate" type="text">
 				</div>
 			</div>
+			<div class="input-field col s12">
+				{{ form.titulo }}
+				{{ form.titulo.label_tag }}
+			</div>
+			<div class="input-field col s12">
+				{{ form.descripcion }}
+				{{ form.descripcion.label_tag }}
+			</div>
 			<button class="btn waves-effect waves-light green darken-3" type="submit" name="action">Enviar
     			<i class="material-icons right">send</i>
   			</button>
@@ -50,6 +58,7 @@
 <script src="{% static "materialize/js/materialize.js" %}"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+			$('textarea').addClass('materialize-textarea');
 			$('.parallax').parallax();
 			$(".button-collapse").sideNav();
 			$('.slider').slider();
