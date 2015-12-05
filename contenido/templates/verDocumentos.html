@@ -19,9 +19,13 @@
 						</div>
 						<div class="card-action">
 							<a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="{{ i.nombre }}" href="/media/{{MEDIA_ROOT}}{{i.documento}}">{{ i.nombre|truncatechars:30 }}</a>
+							{%if perms.contenido.change_documento %}
+								<a class="waves-effect waves-light btn" href="/editarDocumento/{{i.id}}"> <i class="material-icons yellow-text accent-2">border_color</i> </a>
+								<a class="waves-effect waves-light btn" href="/eliminarDocumento/{{i.id}}"> <i class="material-icons red-text accent-4">delete</i> </a>
+							{% endif %}
 						</div>
 					</div>	
-					</div>
+				</div>
 				{% empty %}
 				<h5>No hay novedades</h5>
 				{% endfor %}

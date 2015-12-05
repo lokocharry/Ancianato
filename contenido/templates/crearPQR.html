@@ -12,28 +12,18 @@
 
 	<div class="row">
 		<div class="col s8">
-		<h3 class="center">Subir Documento</h3>
+		<h3 class="center">Crear PQR</h3>
 		<form method="POST" enctype="multipart/form-data">
 			{% csrf_token %}
-			<div class="file-field input-field">
-			{{ form.documento.errors }}
-				<div class="btn yellow accent-2">
-					<span >Archivo</span>
-					{{ form.documento }}
-				</div>
-				<div class="file-path-wrapper">
-					<input class="file-path validate" type="text">
-				</div>
-			</div>
 			{{ form.titulo.errors }}
 			<div class="input-field col s12">
 				{{ form.titulo }}
 				{{ form.titulo.label_tag }}
 			</div>
-			{{ form.descripcion.errors }}
+			{{ form.respuesta.errors }}
 			<div class="input-field col s12">
-				{{ form.descripcion }}
-				{{ form.descripcion.label_tag }}
+				{{ form.respuesta }}
+				{{ form.respuesta.label_tag }}
 			</div>
 			<button class="btn waves-effect waves-light green darken-3" type="submit" name="action">Enviar
     			<i class="material-icons right">send</i>
@@ -41,21 +31,19 @@
 		</form>
 		</div>
 		<div class="col s4">
-			<h5 class="center">Últimos Documentos</h5>
+			<h5 class="center">Últimas PQR</h5>
 			<div class="row">
-				{% for i in documentos %}
+				{% for i in pqr %}
 				<div class="col card-panel s3">
 						<span class="white-text">
-							<img src="/static/img/{{ i.extension }}-icon.png" width="64px" height="64px">
-							<br>
-							<a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="{{ i.nombre }}" href="/media/{{MEDIA_ROOT}}{{i.documento}}">{{ i.nombre|truncatechars:12 }}</a>
-							{%if perms.contenido.change_documento %}
+							<a class="tooltipped" data-position="bottom" data-delay="30" data-tooltip="{{ i.titulo }}" >{{ i.titulo|truncatechars:12 }}</a>
+							{%if perms.contenido.change_pqr %}
 							<div class="row">
 								<div class="col s6">
-									<a class="" href="/editarDocumento/{{i.id}}"> <i class="small material-icons yellow-text accent-2">border_color</i> </a>
+									<a class="" href="/editar_pqr/{{i.id}}"> <i class="small material-icons yellow-text accent-2">border_color</i> </a>
 								</div>
 								<div class="col s6">
-									<a class="" href="/eliminarDocumento/{{i.id}}"> <i class="small material-icons red-text accent-4">delete</i> </a>
+									<a class="" href="/eliminar_pqr/{{i.id}}"> <i class="small material-icons red-text accent-4">delete</i> </a>
 								</div>
 							</div>
 							{% endif %}

@@ -27,6 +27,11 @@ class DocumentoForm(forms.ModelForm):
 		model = Documento
 		fields = '__all__'
 
+class PQRForm(forms.ModelForm):
+	class Meta:
+		model = PQR
+		fields = '__all__'
+
 class ContactForm(forms.Form):
 	nombre = forms.CharField()
 	email = forms.EmailField()

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+	<div class="section">
+		<div class="row">
+			<div class="col s12">
+				<h3 class="center">Eliminar {{ modelo }}</h3>
+				<h5>¿Quiere eliminar el {{ modelo }} {{ objeto }}?</h5>
+				<a class="waves-effect waves-light btn" href="/confirmar_eliminar_pqr/{{objeto.id}}"> <i class="material-icons yellow-text accent-2">done</i> </a>
+				<a class="waves-effect waves-light btn" href="/verDocumentos"> <i class="material-icons red-text accent-4">clear</i> </a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{% static "materialize/js/materialize.js" %}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.parallax').parallax();
+		$(".button-collapse").sideNav();
+		$('.slider').slider({height: '90vh'});
+	});
+</script>
+
+{% endblock content %}
+
+</body>
+</html>

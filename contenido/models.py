@@ -48,6 +48,13 @@ class Documento(models.Model):
 	usuario = models.ForeignKey(User, null=True, blank=True)
 	tipo = models.CharField(max_length=1, null=True, blank=True, choices=TIPO_DOCUMENTO)
 
+	class Meta:
+		permissions = (
+            ("add_licitacion", "Can add licitacion"),
+            ("change_licitacion", "Can change licitacion"),
+            ("delete_licitacion", "Can delete licitacion"),
+        )
+
 	@property
 	def nombre(self):
 		return os.path.basename(self.documento.name)
@@ -59,3 +66,11 @@ class Documento(models.Model):
 
 	def __unicode__(self):
 		return self.nombre
+
+class PQR(models.Model):
+    titulo = models.CharField(max_length=100)
+    respuesta = models.TextField()
+
+    def __unicode__(self):
+		return self.titulo
+

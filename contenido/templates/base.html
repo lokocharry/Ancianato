@@ -25,11 +25,15 @@
 					<li>Bienvenido/a {{ user.first_name }}</li>
 						{%if perms.contenido.add_documento and user.is_superuser %}
 							<li><a href="/subirDocumento" class="yellow-text accent-2">Subir Documento</a></li>
-						{% else %}
+						{% endif %}
+						{%if perms.contenido.add_licitacion %}
 							<li><a href="/subirLicitacion" class="yellow-text accent-2">Subir Licitacion</a></li>
 						{% endif %}
 						{%if perms.contenido.add_mision and perms.contenido.add_vision %}
 							<li><a href="/editarConocenos" class="yellow-text accent-2">Editar Conocenos</a></li>
+						{% endif %}
+						{%if perms.contenido.add_pqr %}
+							<li><a href="/crear_pqr" class="yellow-text accent-2">Crear PQR</a></li>
 						{% endif %}
 						{%if user.is_superuser %}
 							<li><a href="/admin" class="yellow-text accent-2">Módulo Admin</a></li>
@@ -105,16 +109,14 @@
 						<li><a class="white-text" href="#!">Link 4</a></li>
 					</ul>
 				</div>
+				-->
 				<div class="col l3 s12">
-					<h5 class="white-text">Connect</h5>
 					<ul>
-						<li><a class="white-text" href="#!">Link 1</a></li>
-						<li><a class="white-text" href="#!">Link 2</a></li>
-						<li><a class="white-text" href="#!">Link 3</a></li>
-						<li><a class="white-text" href="#!">Link 4</a></li>
+						<li><a class="white-text" href="/pqr">Preguntas/Quejas/Reclamos</a></li>
+						<li><a class="white-text" href="/legalidad">Legalidad</a></li>
 					</ul>
 				</div>
-				-->
+				
 			</div>
 		</div>
 		<div class="footer-copyright">

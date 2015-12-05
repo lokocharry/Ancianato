@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="container">
+	<div class="section">
+	{% for i in pqr %}
+		<div class="row">
+			<div class="col s12">
+				<h3>{{ i.titulo }}</h3>
+				<p>{{ i.respuesta }}</p>
+				{%if perms.contenido.change_pqr %}
+					<a class="waves-effect waves-light btn" href="/editar_pqr/{{i.id}}"> <i class="material-icons yellow-text accent-2">border_color</i> </a>
+					<a class="waves-effect waves-light btn" href="/eliminar_pqr/{{i.id}}"> <i class="material-icons red-text accent-4">delete</i> </a>
+				{% endif %}
+			</div>
+		</div>
+	{% endfor %}
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{% static "materialize/js/materialize.js" %}"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.parallax').parallax();
+		$(".button-collapse").sideNav();
+		$('.slider').slider({height: '90vh'});
+	});
+</script>
+
+{% endblock content %}
+
+</body>
+</html>

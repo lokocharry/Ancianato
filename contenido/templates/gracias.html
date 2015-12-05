@@ -1,9 +1,30 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<h1>Gracias por su correo</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<style type="text/css">
+	.parallax-container {
+		height: 60vh;
+	}
+</style>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+	<div class="row">
+		<h3>Gracias por su correo</h3>
+		<p>Gracias por comunicarse con nosotros, responderemos sus inquietudes lo más pronto posible.</p>
+		<a class="btn waves-effect waves-light green darken-3" href="/">Volver al Inicio<i class="material-icons right">send</i></a>
+	</div>
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="{% static "materialize/js/materialize.js" %}"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.parallax').parallax();
+			$(".button-collapse").sideNav();
+			$('.slider').slider();
+		});
+	</script>
+
+{% endblock content %}

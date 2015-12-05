@@ -22,6 +22,9 @@ from contenido.forms import *
 from django.template import Context
 from django.core.mail import send_mail, BadHeaderError
 from django.contrib.auth.decorators import permission_required
+from django.conf import settings
+from django.template import Context
+from django.template.loader import get_template
 
 def inicio(request):
 	documentos=Documento.objects.filter(tipo="D").order_by('-id')
@@ -60,7 +63,34 @@ def subir_documento(request):
 		form = DocumentoForm()
 	return render_to_response('subirDocumento.html', locals(), context_instance=RequestContext(request))
 
-@permission_required('contenido.add_documento', login_url='/ingresar')
+@permission_required('contenido.change_documento', login_url='/ingresar')
+def editar_documento(request, id):
+	documento=Documento.objects.get(id=id)
+	if request.method=='POST':
+		form = DocumentoForm(request.POST, request.FILES, instance=documento)
+		if form.is_valid():
+			obj=form.save()
+			obj.usuario=request.user
+			obj.tipo="D"
+			obj.save()
+			return HttpResponseRedirect('/verDocumentos')
+	else:
+		form = DocumentoForm(instance=documento)
+	return render_to_response('subirDocumento.html', locals(), context_instance=RequestContext(request))
+
+@permission_required('contenido.delete_documento', login_url='/ingresar')
+def eliminar_documento(request, id):
+	modelo="Documento"
+	objeto=Documento.objects.get(id=id)
+	return render_to_response('eliminarDocumento.html', locals(), context_instance=RequestContext(request))
+
+@permission_required('contenido.delete_documento', login_url='/ingresar')
+def confirmar_eliminar_documento(request, id):
+	documento=Documento.objects.get(id=id)
+	documento.delete()
+	return HttpResponseRedirect('/verDocumentos')
+
+@permission_required('contenido.add_licitacion', login_url='/ingresar')
 def subir_licitacion(request):
 	documentos=Documento.objects.filter(tipo="L").order_by('-id')
 	if request.method=='POST':
@@ -106,12 +136,26 @@ def contactenos(request):
 		subject = request.POST.get('asunto', '')
 		message = request.POST.get('mensage', '')
 		from_email = request.POST.get('email', '')
-		if subject and message and from_email:
+		name = request.POST.get('nombre', '')
+		if subject and message and from_email and name:
 			try:
-				send_mail(subject, message, from_email, ['jorge.lozano@uptc.edu.co'])
+				send_mail(
+					subject,
+					get_template('email.html').render(
+						Context({
+							'subject': request.POST.get('asunto', ''),
+							'message' :request.POST.get('mensage', ''),
+							'from_email': request.POST.get('email', ''),
+							'name' :request.POST.get('nombre', ''),
+							})
+						),
+					settings.EMAIL_HOST_USER,
+					['jorge.lozano@uptc.edu.co'],
+					fail_silently = False
+				)
 			except BadHeaderError:
 				return HttpResponse('Cabecera invalida encontrada.')
-			return HttpResponseRedirect('/contactenos/gracias/')
+			return HttpResponseRedirect('/gracias')
 	else:
 		return render_to_response('contactenos.html', {'form': ContactForm()}, context_instance=RequestContext(request))
 
@@ -122,6 +166,13 @@ def ver_contenido(request):
 	contenido=Pagina.objects.all()
 	return render_to_response('verContenido.html', locals(), context_instance=RequestContext(request))
 
+def pqr(request):
+	pqr=PQR.objects.all()
+	return render_to_response('PQR.html', locals(), context_instance=RequestContext(request))
+
+def legalidad(request):
+	return render_to_response('Legalidad.html', locals(), context_instance=RequestContext(request))
+
 def verDocumentos(request):
 	titulo="Últimas Novedades"
 	documentos=Documento.objects.filter(tipo="D").order_by('-id')
@@ -131,3 +182,40 @@ def verLicitaciones(request):
 	titulo="Últimas Licitaciones"
 	documentos=Documento.objects.filter(tipo="L").order_by('-id')
 	return render_to_response('verDocumentos.html', locals(), context_instance=RequestContext(request))
+
+@permission_required('contenido.add_pqr', login_url='/ingresar')
+def crear_pqr(request):
+	pqr=PQR.objects.all()
+	if request.method=='POST':
+		form = PQRForm(request.POST or None, request.FILES)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/crear_pqr')
+	else:
+		form = PQRForm()
+	return render_to_response('crearPQR.html', locals(), context_instance=RequestContext(request))
+
+@permission_required('contenido.change_pqr', login_url='/ingresar')
+def editar_pqr(request, id):
+	obj=PQR.objects.get(id=id)
+	pqr=PQR.objects.all()
+	if request.method=='POST':
+		form = PQRForm(request.POST, request.FILES, instance=obj)
+		if form.is_valid():
+			form.save()
+			return HttpResponseRedirect('/crear_pqr')
+	else:
+		form = PQRForm(instance=obj)
+	return render_to_response('crearPQR.html', locals(), context_instance=RequestContext(request))
+
+@permission_required('contenido.delete_documento', login_url='/ingresar')
+def eliminar_pqr(request, id):
+	modelo="Pregunta/Queja/Reclamo"
+	objeto=PQR.objects.get(id=id)
+	return render_to_response('eliminarPQR.html', locals(), context_instance=RequestContext(request))
+
+@permission_required('contenido.delete_documento', login_url='/ingresar')
+def confirmar_eliminar_pqr(request, id):
+	documento=PQR.objects.get(id=id)
+	documento.delete()
+	return HttpResponseRedirect('/verDocumentos')

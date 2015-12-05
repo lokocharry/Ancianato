@@ -6,11 +6,11 @@ from django.contrib.auth.models import Permission
 def usuario_registrado(sender, **kwargs):
 	user = kwargs['user']
 	grupo=Group.objects.get_or_create(name="Licitantes")
-	perm = Permission.objects.get(codename='add_documento')
+	perm = Permission.objects.get(codename='add_licitacion')
 	grupo[0].permissions.add(perm)
-	perm = Permission.objects.get(codename='change_documento')
+	perm = Permission.objects.get(codename='change_licitacion')
 	grupo[0].permissions.add(perm)
-	perm = Permission.objects.get(codename='delete_documento')
+	perm = Permission.objects.get(codename='delete_licitacion')
 	grupo[0].user_set.add(user)
 	print "Usuario registrado agregado al grupo Licitantes"
 

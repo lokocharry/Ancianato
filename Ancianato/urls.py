@@ -27,7 +27,16 @@ urlpatterns = [
     url(r'^dondeEstamos/', 'contenido.views.dondeEstamos', name='contactenos'),
     url(r'^servicios/', 'contenido.views.servicios', name='servicios'),
     url(r'^subirDocumento/', 'contenido.views.subir_documento', name='subir_documento'),
+    url(r'^editarDocumento/(?P<id>\d+)/$', 'contenido.views.editar_documento', name='editar_documento'),
+    url(r'^eliminarDocumento/(?P<id>\d+)/$', 'contenido.views.eliminar_documento', name='eliminar_documento'),
+    url(r'^confirmarEliminarDocumento/(?P<id>\d+)/$', 'contenido.views.confirmar_eliminar_documento', name='confirmar_eliminar_documento'),
     url(r'^editarConocenos/', 'contenido.views.editar_conocenos', name='editarConocenos'),
+    url(r'^crear_pqr/', 'contenido.views.crear_pqr', name='crear_pqr'),
+    url(r'^editar_pqr/(?P<id>\d+)/$', 'contenido.views.editar_pqr', name='editar_pqr'),
+    url(r'^eliminar_pqr/(?P<id>\d+)/$', 'contenido.views.eliminar_pqr', name='eliminar_pqr'),
+    url(r'^confirmar_eliminar_pqr/(?P<id>\d+)/$', 'contenido.views.confirmar_eliminar_pqr', name='confirmar_eliminar_pqr'),
+    url(r'^pqr/', 'contenido.views.pqr', name='pqr'),
+    url(r'^legalidad/', 'contenido.views.legalidad', name='legalidad'),
 
     url(r'^conocenos/', 'contenido.views.conocenos', name='conocenos'),
     url(r'^subirLicitacion/', 'contenido.views.subir_licitacion', name='subir_licitacion'),
@@ -42,5 +51,6 @@ urlpatterns = [
     url(r'^crear_contenido', 'contenido.views.crear_contenido', name='crear_contenido'),
     url(r'^contactenos/', 'contenido.views.contactenos', name='contactenos'),
     url(r'^ver_contenido/', 'contenido.views.ver_contenido'),
-    url(r'^contactenos/gracias/', 'contenido.views.gracias_contacto', name='contactenos-gracias'),
+    url(r'^gracias/', 'contenido.views.gracias_contacto', name='contactenos-gracias'),
+
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
