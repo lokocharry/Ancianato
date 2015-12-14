@@ -26,9 +26,6 @@
 						{%if perms.contenido.add_documento and user.is_superuser %}
 							<li><a href="/subirDocumento" class="yellow-text accent-2">Subir Documento</a></li>
 						{% endif %}
-						{%if perms.contenido.add_licitacion %}
-							<li><a href="/subirLicitacion" class="yellow-text accent-2">Subir Licitacion</a></li>
-						{% endif %}
 						{%if perms.contenido.add_mision and perms.contenido.add_vision %}
 							<li><a href="/editarConocenos" class="yellow-text accent-2">Editar Conocenos</a></li>
 						{% endif %}
@@ -46,11 +43,9 @@
 
 			<ul id="nav-mobile" class="side-nav">
 				{% if user.is_authenticated %}
-					<li>Bienvenido/a {{ user.first_name }}</li>
+					<li class="black-text">Bienvenido/a {{ user.first_name }}</li>
 						{%if perms.contenido.add_documento and user.is_superuser %}
 							<li><a href="/subirDocumento" class="yellow-text accent-2">Subir Documento</a></li>
-						{% else %}
-							<li><a href="/subirLicitacion" class="yellow-text accent-2">Subir Licitacion</a></li>
 						{% endif %}
 						{%if perms.contenido.add_mision and perms.contenido.add_vision %}
 							<li><a href="/editarConocenos" class="yellow-text accent-2">Editar Conocenos</a></li>
@@ -77,7 +72,6 @@
 				<div class="row center">
 				{% if not user.is_authenticated %}
 					<a href="/ingresar" id="download-button" class="btn-large waves-effect green darken-3 waves-light teal lighten-1">Ingresar</a>
-					<a href="/registrarse" id="download-button" class="btn-large waves-effect green darken-3 waves-light teal lighten-1">Regístrate</a>
 				{% endif %}
 				</div>
 				<br><br>

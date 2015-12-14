@@ -66,6 +66,7 @@ def subir_documento(request):
 @permission_required('contenido.change_documento', login_url='/ingresar')
 def editar_documento(request, id):
 	documento=Documento.objects.get(id=id)
+	documentos=Documento.objects.filter(tipo="D").order_by('-id')
 	if request.method=='POST':
 		form = DocumentoForm(request.POST, request.FILES, instance=documento)
 		if form.is_valid():

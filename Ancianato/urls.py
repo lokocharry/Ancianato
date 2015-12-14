@@ -44,7 +44,7 @@ urlpatterns = [
     url(r'^verLicitaciones/', 'contenido.views.verLicitaciones', name='verLicitaciones'),
 
     url(r'^salir', userena_views.signout),
-    url(r'^registrarse/', userena_views.signup),
+    #url(r'^registrarse/', userena_views.signup),
     url(r'^ingresar/', userena_views.signin),
     url(r'^usuario/', include('userena.urls')),
 
