@@ -8,6 +8,14 @@
 	.parallax-container {
 		height: 60vh;
 	}
+
+	.rotate90 {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+	}
 </style>
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 {{ form1.media }}
@@ -54,31 +62,31 @@
 						<div class="slider">
 							<ul class="slides">
 								<li>
-									<img src="{% static "img/1.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
+									<img src="{% static "img/1.jpg" %}" alt="Unsplashed background img 1" class="rotate90"> <!-- random image -->
 									<div class="caption center-align">
-										<h3>This is our big Tagline!</h3>
-										<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+										<h3>Talleres!</h3>
+										<h5 class="light grey-text text-lighten-3">De fomento del ejercicio y la recreación.</h5>
 									</div>
 								</li>
 								<li>
 									<img src="{% static "img/2.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
 									<div class="caption left-align">
-										<h3>Left Aligned Caption</h3>
-										<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+										<h3>Talleres de desarrollo personal</h3>
+										<h5 class="light grey-text text-lighten-3">Fomentando el envejecimiento saludable.</h5>
 									</div>
 								</li>
 								<li>
-									<img src="{% static "img/3.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
+									<img src="{% static "img/3.jpg" %}" alt="Unsplashed background img 1" class="rotate90"> <!-- random image -->
 									<div class="caption right-align">
-										<h3>Right Aligned Caption</h3>
-										<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+										<h3>Taller de folklore</h3>
+										<h5 class="light grey-text text-lighten-3">Guitarra, pintura, teatro y baile</h5>
 									</div>
 								</li>
 								<li>
 									<img src="{% static "img/4.jpg" %}" alt="Unsplashed background img 1"> <!-- random image -->
 									<div class="caption center-align">
-										<h3>This is our big Tagline!</h3>
-										<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+										<h3>Encuentros recreativos!</h3>
+										<h5 class="light grey-text text-lighten-3">Caminatas y actividades al aire libre.</h5>
 									</div>
 								</li>
 							</ul>
